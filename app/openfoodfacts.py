@@ -1,7 +1,7 @@
 import requests
 
 BASE_URL = "https://world.openfoodfacts.org"
-HEADERS = {"User-Agent": "InventoryLab/1.0 (student@example.com)"}
+HEADERS = {"User-Agent": "InventoryLab/1.0 (https://github.com/Patience1m)"}
 SEARCH_URL = "https://search.openfoodfacts.org/search"
 
 class ExternalAPIError(Exception):

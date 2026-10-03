@@ -99,7 +99,7 @@ docs/DESIGN.md          route design
 pytest -v
 ```
 
-43 tests cover every route, the OpenFoodFacts code and every menu command. Web calls are replaced with fakes using `unittest.mock`, so the tests run offline. The routes were also checked by hand in Postman.
+43 tests cover every route, the OpenFoodFacts code and every menu command. Web calls are replaced with fakes using `unittest.mock`, so the tests run offline.
 
 ## How the work was organised in Git
 
@@ -108,7 +108,7 @@ Each feature was built on its own branch, merged through a pull request, and the
 1. `feature/crud-routes`: the Flask app, validation and the CRUD routes
 2. `feature/external-api`: OpenFoodFacts functions and the lookup/import routes
 3. `feature/cli`: the terminal menu
-4. `docs/readme`: README and design notes
+4. `fix/name-search`: name search moved to Search-a-licious, brands shown as text, controller update, README and design notes
 
 ## Good to know
 

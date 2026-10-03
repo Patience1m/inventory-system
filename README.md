@@ -112,6 +112,6 @@ Each feature was built on its own branch, merged through a pull request, and the
 
 ## Good to know
 
-- Data is stored in memory only. Restarting the API resets it to the three sample products.
-- OpenFoodFacts' search service is sometimes unavailable. When that happens the API replies with a clear 502 error instead of crashing, and barcode lookups still work.
--* OpenFoodFacts asks apps to identify themselves, so the `User-Agent` header in `app/openfoodfacts.py` carries a contact for this project.
+* Data is stored in memory only. Restarting the API resets it to the three sample products.
+* OpenFoodFacts' search service is sometimes unavailable. When that happens the API replies with a clear 502 error instead of crashing, and barcode lookups still work.
+* OpenFoodFacts asks apps to identify themselves, so the `User-Agent` header in `app/openfoodfacts.py` carries a contact for this project.

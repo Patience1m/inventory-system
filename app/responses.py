@@ -21,3 +21,10 @@ def not_found(message = "Resource not found"):
         success = False,
         status_code = 404
     )
+
+def bad_gateway(message = "External API failure"):
+    return api_response(
+        message = message,
+        success = False,
+        status_code = 502
+    )

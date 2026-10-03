@@ -2,6 +2,7 @@ import requests
 
 BASE_URL = "https://world.openfoodfacts.org"
 HEADERS = {"User-Agent": "InventoryLab/1.0 (student@example.com)"}
+SEARCH_URL = "https://search.openfoodfacts.org/search"
 
 class ExternalAPIError(Exception):
     pass
@@ -31,13 +32,12 @@ def fetch_by_barcode(barcode):
 def search_by_name(name, limit = 5):
     try:
         response = requests.get(
-            f"{BASE_URL}/cgi/search.pl",
+            SEARCH_URL,
             headers = HEADERS,
             timeout = 10,
-            params = {"search_terms": name, "search_simple": 1,
-                      "action": "process", "json": 1, "page_size": limit})
+            params = {"q": name, "page_size": limit, "fields": "code,product_name,brands"})
         response.raise_for_status()
-        products = response.json().get("products", [])
+        products = response.json().get("hits", [])
     except (requests.RequestException, ValueError) as error:
         raise ExternalAPIError(str(error)) from error
     return [normalize(product) for product in products]

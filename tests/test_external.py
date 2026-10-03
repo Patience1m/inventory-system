@@ -52,6 +52,13 @@ def test_search_by_name(mock_get):
     assert [product["barcode"] for product in results] == ["1", "2"]
     assert mock_get.call_args.kwargs["params"]["q"] == "milk"
 
+@patch("app.openfoodfacts.requests.get")
+def test_search_joins_brand_list(mock_get):
+    mock_get.return_value = fake_response(
+        {"hits": [{"code": "1", "product_name": "Cola", "brands": ["Coca-Cola", " Fanta"]}]})
+    results = search_by_name("cola")
+    assert results[0]["brands"] == "Coca-Cola, Fanta"
+
 @patch("app.openfoodfacts.requests.get", side_effect = requests.Timeout("slow"))
 def test_search_timeout(mock_get):
     with pytest.raises(ExternalAPIError):

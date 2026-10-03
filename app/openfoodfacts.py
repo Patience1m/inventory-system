@@ -8,10 +8,13 @@ class ExternalAPIError(Exception):
     pass
 
 def normalize(product, barcode = None):
+    brands = product.get("brands", "")
+    if isinstance(brands, list):
+        brands = ", ".join(brand.strip() for brand in brands)
     return {
         "barcode": barcode or product.get("code", ""),
         "product_name": product.get("product_name") or "Unknown",
-        "brands": product.get("brands", ""),
+        "brands": brands,
         "ingredients_text": product.get("ingredients_text", ""),
     }
 
